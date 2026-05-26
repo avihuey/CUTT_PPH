@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מחקר CUTT-PPH | שיבא תל-השומר</title>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Assistant',sans-serif;direction:rtl;background:#fdf6f0}
+
+/* Full-screen slide container */
+.slides-wrapper{
+  position:fixed;top:0;left:0;right:0;bottom:64px;
+  overflow:hidden;
+}
+
+/* Each slide scrolls independently */
+.slide{
+  display:none;
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  flex-direction:column;
+  animation:fi 0.35s ease;
+}
+.slide.active{display:flex;flex-direction:column;}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* hero */
+.hero{
+  flex-shrink:0;
+  width:100%;padding:36px 24px 32px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;top:-50px;right:-40px;width:140px;height:140px;background:rgba(255,255,255,0.15);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-30px;left:-30px;width:100px;height:100px;background:rgba(255,255,255,0.1);border-radius:50%}
+.hero-tag{display:inline-block;background:rgba(255,255,255,0.5);font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+.hero-title{font-size:22px;font-weight:700;line-height:1.45;margin-top:10px}
+
+/* content area - NO white background, padding only */
+.body{
+  flex:1;
+  padding:20px 18px 24px;
+  width:100%;
+}
+
+/* card - coloured, no white */
+.card{
+  border-radius:16px;
+  padding:18px 20px;
+  margin-bottom:14px;
+  font-size:15px;line-height:1.85;color:#3a2a20;
+}
+.card-title{font-size:16px;font-weight:700;margin-bottom:10px}
+
+/* accent strip */
+.strip{
+  border-radius:12px;padding:14px 18px;
+  margin-bottom:12px;font-size:14px;line-height:1.8;
+  border-right:4px solid;
+}
+
+/* benefit row */
+.benefit{
+  display:flex;align-items:flex-start;gap:12px;
+  border-radius:14px;padding:14px 16px;margin-bottom:10px;
+}
+.bicon{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.btext{font-size:15px;line-height:1.8;color:#3a2a20}
+
+/* step row */
+.step{display:flex;align-items:flex-start;gap:14px;border-radius:14px;padding:15px 17px;margin-bottom:10px}
+.snum{width:34px;height:34px;border-radius:50%;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stext{font-size:15px;line-height:1.8;color:#3a2a20}
+
+/* arms */
+.arms{display:flex;gap:10px;margin-top:14px}
+.arm{flex:1;border-radius:14px;padding:16px 8px;text-align:center}
+.arm-emoji{font-size:28px}
+.arm-label{font-size:13px;font-weight:700;margin-top:6px}
+.arm-drug{font-size:14px;margin-top:4px;color:#555}
+
+/* contact */
+.ccard{background:rgba(255,255,255,0.75);border-radius:18px;padding:22px 20px;text-align:center;margin-bottom:14px;border:1px solid rgba(0,0,0,0.06)}
+.avatar{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 12px}
+.cname{font-size:17px;font-weight:700;margin-bottom:4px}
+.crole{font-size:13px;color:#777;margin-bottom:18px}
+.cbtn{display:block;width:100%;color:white;font-size:16px;font-weight:700;padding:15px;border-radius:13px;text-decoration:none;text-align:center}
+.ctag{border-radius:12px;padding:12px 16px;font-size:13px;text-align:center;line-height:1.7}
+
+/* nav bar */
+.nav{
+  position:fixed;bottom:0;left:0;right:0;height:64px;
+  background:rgba(255,255,255,0.97);
+  border-top:1px solid #e8e8e8;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;z-index:200;
+}
+.nbtn{background:none;border:none;font-size:28px;cursor:pointer;padding:6px 14px;border-radius:50%;color:#666;transition:background 0.2s}
+.nbtn:hover{background:#f0f0f0}
+.nbtn:disabled{opacity:0.18;cursor:default}
+.dots{display:flex;gap:7px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:#ddd;transition:all 0.3s;cursor:pointer}
+.dot.active{transform:scale(1.35)}
+</style>
+</head>
+<body>
+
+<div class="slides-wrapper">
+
+<!-- ══ SLIDE 1 ══ -->
+<div class="slide active" id="s1">
+  <div class="hero" style="background:linear-gradient(150deg,#fce4ec,#f06292 55%,#ce93d8)">
+    <div class="hero-tag" style="color:#880e4f">מחקר שיבא תל-השומר · SMC-26-2925</div>
+    <svg width="160" height="110" viewBox="0 0 160 110" style="margin:0 auto 4px;display:block">
+      <ellipse cx="80" cy="72" rx="68" ry="40" fill="rgba(255,255,255,0.25)"/>
+      <circle cx="55" cy="62" r="19" fill="#fce4ec"/>
+      <circle cx="55" cy="48" r="11" fill="#f48fb1"/>
+      <circle cx="51.5" cy="47" r="1.7" fill="#880e4f"/><circle cx="58.5" cy="47" r="1.7" fill="#880e4f"/>
+      <path d="M51.5 51 Q55 53.5 58.5 51" stroke="#880e4f" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <circle cx="105" cy="62" r="19" fill="#f3e5f5"/>
+      <circle cx="105" cy="48" r="11" fill="#ce93d8"/>
+      <circle cx="101.5" cy="47" r="1.7" fill="#4a148c"/><circle cx="108.5" cy="47" r="1.7" fill="#4a148c"/>
+      <path d="M101.5 51 Q105 53.5 108.5 51" stroke="#4a148c" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <text x="79" y="39" font-size="13" text-anchor="middle" fill="#e91e63">♥</text>
+      <text x="17" y="26" font-size="11" fill="rgba(255,255,255,0.65)">✦</text>
+      <text x="143" y="23" font-size="9" fill="rgba(255,255,255,0.55)">✦</text>
+    </svg>
+    <div class="hero-title" style="color:#fff">מניעת דימום מוגבר<br>בלידות תאומים</div>
+  </div>
+  <div class="body" style="background:linear-gradient(180deg,#fce4ec 0%,#fdf0f5 100%)">
+    <div class="card" style="background:rgba(255,255,255,0.7)">
+      <div class="card-title" style="color:#c06b8a">ברוכה הבאה 👋</div>
+      את עומדת ללדת תאומים — אירוע מיוחד שמגיע עם תשומת לב רפואית מוגברת.<br><br>
+      המחקר שלנו עוסק במניעת דימום מוגבר בלידות תאומים — נרתיקיות וקיסריות כאחד. בדפים הבאים תוכלי לקרוא על המחקר בצורה נוחה ולהחליט אם את מעוניינת להשתתף.
+    </div>
+    <div class="strip" style="background:rgba(255,255,255,0.6);border-color:#f48fb1;color:#880e4f">
+      💡 לחצי על החץ בתחתית הדף כדי לעבור לדף הבא
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2 ══ -->
+<div class="slide" id="s2">
+  <div class="hero" style="background:linear-gradient(135deg,#1565c0,#42a5f5 60%,#90caf9)">
+    <svg width="82" height="82" viewBox="0 0 82 82" style="margin:0 auto 6px;display:block">
+      <path d="M41 8 Q58 28 58 47 A17 17 0 0 1 24 47 Q24 28 41 8Z" fill="white" opacity="0.85"/>
+      <rect x="38" y="28" width="6" height="22" rx="2.5" fill="#1565c0" opacity="0.8"/>
+      <rect x="29" y="37" width="24" height="6" rx="2.5" fill="#1565c0" opacity="0.8"/>
+    </svg>
+    <div class="hero-title" style="color:#fff">מהו דימום מוגבר לאחר לידה?</div>
+  </div>
+  <div class="body" style="background:linear-gradient(180deg,#bbdefb 0%,#e8f4fd 100%)">
+    <div class="card" style="background:rgba(255,255,255,0.65)">
+      <div class="card-title" style="color:#1565c0">מה קורה בגוף?</div>
+      לאחר כל לידה, הרחם מתכווץ כדי לעצור את הדימום הטבעי. לעיתים, הרחם מתקשה להתכווץ מספיק — מצב שמוביל לאיבוד דם מוגבר מהרגיל. בשפה הרפואית קוראים לזה <strong>PPH</strong> — Postpartum Hemorrhage (דימום לאחר לידה).
+    </div>
+    <div class="card" style="background:rgba(255,255,255,0.65)">
+      <div class="card-title" style="color:#1565c0">עד כמה זה נפוץ?</div>
+      בלידות רגילות, זה מתרחש בכ־<strong style="font-size:21px;color:#1565c0">3–5%</strong> מהמקרים בלבד. כלומר, הרוב המוחלט של הנשים לא יחוו זאת כלל.
+    </div>
+    <div class="strip" style="background:rgba(255,255,255,0.55);border-color:#43a047;color:#1b5e20">
+      ✅ לרוב מדובר במצב שניתן לטיפול מהיר ויעיל. הצוות הרפואי ערוך לכך ופועל לפי פרוטוקולים ברורים — ביום ובלילה.
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3 ══ -->
+<div class="slide" id="s3">
+  <div class="hero" style="background:linear-gradient(135deg,#e65100,#ffa726 60%,#ffcc02)">
+    <svg width="95" height="90" viewBox="0 0 95 90" style="margin:0 auto 6px;display:block">
+      <ellipse cx="47" cy="58" rx="36" ry="27" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+      <circle cx="30" cy="55" r="13" fill="#fce4ec"/>
+      <circle cx="30" cy="46" r="8" fill="#f48fb1"/>
+      <circle cx="27.5" cy="45.5" r="1.2" fill="#880e4f"/><circle cx="32.5" cy="45.5" r="1.2" fill="#880e4f"/>
+      <path d="M27.5 49 Q30 51 32.5 49" stroke="#880e4f" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <circle cx="64" cy="55" r="13" fill="#fff9c4"/>
+      <circle cx="64" cy="46" r="8" fill="#ffee58"/>
+      <circle cx="61.5" cy="45.5" r="1.2" fill="#f57f17"/><circle cx="66.5" cy="45.5" r="1.2" fill="#f57f17"/>
+      <path d="M61.5 49 Q64 51 66.5 49" stroke="#f57f17" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <text x="47" y="37" font-size="12" text-anchor="middle" fill="#e91e63">♥</text>
+    </svg>
+    <div class="hero-title" style="color:#fff">למה דווקא לידות תאומים?</div>
+  </div>
+  <div class="body" style="background:linear-gradient(180deg,#ffe0b2 0%,#fff8f0 100%)">
+    <div class="card" style="background:rgba(255,255,255,0.65)">
+      <div class="card-title" style="color:#e65100">הרחם עובד קצת יותר קשה</div>
+      ברחם שמכיל שני תינוקות, שריר הרחם נמתח יותר מהרגיל לאורך ההריון. לכן, לאחר הלידה, ייתכן שיידרש ממנו מאמץ גדול יותר כדי להתכווץ כראוי ולעצור את הדימום.
+    </div>
+    <div class="card" style="background:rgba(255,255,255,0.65)">
+      <div class="card-title" style="color:#e65100">הצוות יודע ומתכונן</div>
+      אנחנו מודעים לכך לחלוטין — ולכן כלל הנשים שיולדות תאומים מקבלות תרופה מיוחדת שמסייעת לרחם להתכווץ, מיד לאחר לידת התאום השני.<br><br>
+      המחקר שלנו בא לבדוק: <strong>האם קיימת תרופה שעושה זאת טוב עוד יותר?</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 4 ══ -->
+<div class="slide" id="s4">
+  <div class="hero" style="background:linear-gradient(135deg,#283593,#5c6bc0 55%,#9fa8da)">
+    <svg width="95" height="90" viewBox="0 0 95 90" style="margin:0 auto 6px;display:block">
+      <rect x="10" y="26" width="26" height="44" rx="7" fill="#ff8f00" opacity="0.9"/>
+      <rect x="12" y="15" width="22" height="15" rx="5" fill="#e65100"/>
+      <rect x="17" y="36" width="14" height="2.5" rx="1" fill="white" opacity="0.75"/>
+      <rect x="17" y="43" width="14" height="2.5" rx="1" fill="white" opacity="0.75"/>
+      <rect x="17" y="50" width="14" height="2.5" rx="1" fill="white" opacity="0.75"/>
+      <rect x="59" y="26" width="26" height="44" rx="7" fill="#7986cb" opacity="0.95"/>
+      <rect x="61" y="15" width="22" height="15" rx="5" fill="#283593"/>
+      <rect x="66" y="36" width="14" height="2.5" rx="1" fill="white" opacity="0.75"/>
+      <rect x="66" y="43" width="14" height="2.5" rx="1" fill="white" opacity="0.75"/>
+      <rect x="66" y="50" width="14" height="2.5" rx="1" fill="white" opacity="0.75"/>
+      <text x="47" y="55" font-size="13" text-anchor="middle" fill="white" font-weight="bold">VS</text>
+    </svg>
+    <div class="hero-title" style="color:#fff">שתי התרופות במחקר</div>
+  </div>
+  <div class="body" style="background:linear-gradient(180deg,#c5cae9 0%,#eef0fb 100%)">
+    <div class="card" style="background:rgba(255,243,224,0.85)">
+      <div class="card-title" style="color:#e65100">🟠 פיטוצין (אוקסיטוצין) — הטיפול הנוכחי</div>
+      התרופה שמשמשת כיום בכל בית חולים לאחר לידה. היא גורמת לרחם להתכווץ ועוצרת את הדימום. ניתנת כעירוי לווריד מיד לאחר לידת התאום השני. בשימוש קליני מוכח כבר עשרות שנים.
+    </div>
+    <div class="card" style="background:rgba(232,234,246,0.9)">
+      <div class="card-title" style="color:#283593">🟢 קרבטוצין — התרופה שאנחנו בוחנים</div>
+      גרסה מתקדמת יותר של פיטוצין — פועלת באותו מנגנון, אך <strong>לזמן ארוך יותר</strong>. ניתנת גם היא לווריד. משמשת בבתי חולים רבים בעולם ובישראל — כולל אצלנו בשיבא, לאינדיקציות שונות.
+    </div>
+    <div class="strip" style="background:rgba(232,245,233,0.85);border-color:#43a047;color:#1b5e20">
+      ✅ שתי התרופות בטוחות, מאושרות ומוכרות — זוהי השוואה בין שתי אפשרויות קיימות ומוכחות.
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5 ══ -->
+<div class="slide" id="s5">
+  <div class="hero" style="background:linear-gradient(135deg,#00695c,#26a69a 55%,#80cbc4)">
+    <svg width="88" height="88" viewBox="0 0 88 88" style="margin:0 auto 6px;display:block">
+      <rect x="6" y="52" width="13" height="26" rx="3" fill="white" opacity="0.8"/>
+      <rect x="23" y="37" width="13" height="41" rx="3" fill="white" opacity="0.8"/>
+      <rect x="40" y="44" width="13" height="34" rx="3" fill="white" opacity="0.8"/>
+      <circle cx="67" cy="32" r="18" fill="none" stroke="white" stroke-width="3" opacity="0.9"/>
+      <line x1="80" y1="45" x2="87" y2="55" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+      <path d="M59 32 L64 38 L76 25" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="hero-title" style="color:#fff">מה המחקר אומר על קרבטוצין?</div>
+  </div>
+  <div class="body" style="background:linear-gradient(180deg,#b2dfdb 0%,#e8f5f3 100%)">
+    <div class="card" style="background:rgba(255,255,255,0.65)">
+      <div class="card-title" style="color:#00695c">מה נמצא במחקרים עד כה?</div>
+      סקירה גדולה שפורסמה ב-2025, שכללה 17 מחקרים ויותר מ-3,600 נשים בלידות קיסריות, מצאה שבהשוואה לפיטוצין, קרבטוצין קשור ל:
+    </div>
+    <div class="benefit" style="background:rgba(255,255,255,0.6)">
+      <div class="bicon" style="background:#e0f2f1">💊</div>
+      <div class="btext">צורך נמוך יותר בתרופות נוספות לכיווץ הרחם לאחר הלידה — כמחצית מהשכיחות בקבוצת הפיטוצין</div>
+    </div>
+    <div class="benefit" style="background:rgba(255,255,255,0.6)">
+      <div class="bicon" style="background:#e0f2f1">🩸</div>
+      <div class="btext">ירידה קטנה יותר ברמות ההמוגלובין לאחר הלידה — כלומר פחות איבוד דם</div>
+    </div>
+    <div class="benefit" style="background:rgba(255,255,255,0.6)">
+      <div class="bicon" style="background:#e0f2f1">🏥</div>
+      <div class="btext">פחות צורך בעירויי דם</div>
+    </div>
+    <div class="benefit" style="background:rgba(255,255,255,0.6)">
+      <div class="bicon" style="background:#e0f2f1">😌</div>
+      <div class="btext">תופעות לוואי דומות לחלוטין לפיטוצין — ללא עלייה בבחילות, כאבי ראש או תגובות אחרות</div>
+    </div>
+    <div class="strip" style="background:#00695c;border-color:#00695c;color:white;border-right-width:0;text-align:center;border-radius:14px;padding:16px 18px">
+      שתי התרופות ידועות ובטוחות.<br><strong>אנחנו רוצים לדעת איזו מהן טובה יותר עבורך.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6 ══ -->
+<div class="slide" id="s6">
+  <div class="hero" style="background:linear-gradient(135deg,#880e4f,#e91e63 55%,#f48fb1)">
+    <svg width="88" height="88" viewBox="0 0 88 88" style="margin:0 auto 6px;display:block">
+      <circle cx="44" cy="44" r="32" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="2"/>
+      <circle cx="44" cy="44" r="21" fill="rgba(255,255,255,0.4)"/>
+      <path d="M37 38 L26 44 L37 50" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M51 38 L62 44 L51 50" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="44" y="49" font-size="14" text-anchor="middle" fill="#880e4f" font-weight="bold">?</text>
+    </svg>
+    <div class="hero-title" style="color:#fff">איך מחליטים מה תקבלי?</div>
+  </div>
+  <div class="body" style="background:linear-gradient(180deg,#f8bbd0 0%,#fdeef4 100%)">
+    <div class="card" style="background:rgba(255,255,255,0.65)">
+      <div class="card-title" style="color:#880e4f">הגרלה — פשוטה והוגנת</div>
+      לאחר שתסכימי להשתתף, תוקצי באקראי לאחת משתי הקבוצות — בדומה להטלת מטבע. ההחלטה נעשית על ידי מחשב בלבד, ללא כל השפעה של הרופא, האחות, או שלך.
+      <div class="arms">
+        <div class="arm" style="background:rgba(232,245,233,0.85)">
+          <div class="arm-emoji">🟢</div>
+          <div class="arm-label" style="color:#2e7d32">קבוצה א׳</div>
+          <div class="arm-drug">קרבטוצין</div>
+        </div>
+        <div class="arm" style="background:rgba(255,243,224,0.85)">
+          <div class="arm-emoji">🟠</div>
+          <div class="arm-label" style="color:#e65100">קבוצה ב׳</div>
+          <div class="arm-drug">פיטוצין</div>
+        </div>
+      </div>
+    </div>
+    <div class="strip" style="background:rgba(255,255,255,0.6);border-color:#f48fb1;color:#880e4f">
+      בשתי הקבוצות: את מקבלת תרופה מאושרת ובטוחה, שאר הטיפול זהה לחלוטין לשגרה, והצוות ימשיך לעקוב אחרייך כרגיל ללא שינוי.
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 7 ══ -->
+<div class="slide" id="s7">
+  <div class="hero" style="background:linear-gradient(135deg,#4a148c,#8e24aa 55%,#ce93d8)">
+    <svg width="88" height="88" viewBox="0 0 88 88" style="margin:0 auto 6px;display:block">
+      <rect x="20" y="14" width="48" height="60" rx="9" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="1.5"/>
+      <line x1="32" y1="30" x2="58" y2="30" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+      <line x1="32" y1="42" x2="58" y2="42" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+      <line x1="32" y1="54" x2="58" y2="54" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+      <line x1="32" y1="66" x2="52" y2="66" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+      <path d="M25 29 L28 33 L34 25" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M25 41 L28 45 L34 37" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M25 53 L28 57 L34 49" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M25 65 L28 69 L34 61" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="hero-title" style="color:#fff">מה צריך כדי להשתתף?</div>
+  </div>
+  <div class="body" style="background:linear-gradient(180deg,#e1bee7 0%,#f5eaf8 100%)">
+    <div class="step" style="background:rgba(255,255,255,0.65)">
+      <div class="snum" style="background:#e1bee7;color:#7b1fa2">1</div>
+      <div class="stext"><strong>חתימה על טופס הסכמה לפני הלידה</strong><br>נסביר לך הכל בצורה ברורה ונענה על כל שאלה לפני שתחתמי.</div>
+    </div>
+    <div class="step" style="background:rgba(255,255,255,0.65)">
+      <div class="snum" style="background:#e1bee7;color:#7b1fa2">2</div>
+      <div class="stext"><strong>קבלת אחת משתי התרופות בלידה</strong><br>מיד לאחר לידת התאום השני — כחלק מהטיפול הרגיל.</div>
+    </div>
+    <div class="step" style="background:rgba(255,255,255,0.65)">
+      <div class="snum" style="background:#e1bee7;color:#7b1fa2">3</div>
+      <div class="stext"><strong>בדיקת דם ביום שאחרי הלידה</strong></div>
+    </div>
+    <div class="step" style="background:rgba(255,255,255,0.65)">
+      <div class="snum" style="background:#e1bee7;color:#7b1fa2">4</div>
+      <div class="stext"><strong>שיחת טלפון קצרה כ-6 שבועות לאחר הלידה</strong><br>כ-10 דקות — נשאל כמה שאלות על ההתאוששות שלך.</div>
+    </div>
+    <div class="strip" style="background:rgba(255,255,255,0.6);border-color:#ab47bc;color:#6a1b9a">
+      ההשתתפות היא <strong>התנדבותית לחלוטין</strong> — ניתן לפרוש בכל שלב ללא כל השפעה על הטיפול שתקבלי.
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 8 ══ -->
+<div class="slide" id="s8">
+  <div class="hero" style="background:linear-gradient(135deg,#1b5e20,#388e3c 55%,#81c784)">
+    <svg width="88" height="88" viewBox="0 0 88 88" style="margin:0 auto 6px;display:block">
+      <rect x="26" y="12" width="36" height="62" rx="9" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="2"/>
+      <rect x="32" y="20" width="24" height="38" rx="4" fill="rgba(255,255,255,0.5)"/>
+      <path d="M44 42 C44 42 33 35.5 33 28.5 C33 24 36.5 22 40 23.5 C42 24.5 44 27 44 27 C44 27 46 24.5 48 23.5 C51.5 22 55 24 55 28.5 C55 35.5 44 42 44 42Z" fill="#e91e63" opacity="0.9"/>
+      <circle cx="37" cy="66" r="3" fill="rgba(255,255,255,0.8)"/>
+    </svg>
+    <div class="hero-title" style="color:#fff">יש שאלות? נשמח לענות</div>
+  </div>
+  <div class="body" style="background:linear-gradient(180deg,#c8e6c9 0%,#edf7ee 100%)">
+    <div class="ccard">
+      <div class="avatar" style="background:#e8f5e9">👨‍⚕️</div>
+      <div class="cname" style="color:#2e7d32">ד"ר אביהוא קריגר</div>
+      <div class="crole">חוקר ראשי · מחלקת נשים ויולדות, שיבא תל-השומר</div>
+      <a class="cbtn" href="tel:0547421909" style="background:#2e7d32">📞 054-742-1909</a>
+    </div>
+    <div class="ctag" style="background:rgba(255,255,255,0.65);color:#33691e">
+      מחקר מספר SMC-26-2925<br>
+      מחלקת נשים ויולדות, שיבא תל-השומר<br>
+      <span style="font-size:12px;color:#7cb342">אנחנו כאן בשבילך — לפני ההחלטה ואחריה</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /slides-wrapper -->
+
+<!-- NAV -->
+<div class="nav">
+  <button class="nbtn" id="prevBtn" onclick="go(-1)" disabled>▶</button>
+  <div class="dots" id="dots"></div>
+  <button class="nbtn" id="nextBtn" onclick="go(1)">◀</button>
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+const dotColors=['#c06b8a','#1565c0','#e65100','#3949ab','#00695c','#880e4f','#7b1fa2','#2e7d32'];
+const total=slides.length;
+let cur=0;
+const dotsEl=document.getElementById('dots');
+for(let i=0;i<total;i++){
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  if(i===0)d.style.background=dotColors[0];
+  d.onclick=()=>goTo(i);
+  dotsEl.appendChild(d);
+}
+function goTo(n){
+  slides[cur].classList.remove('active');
+  dotsEl.children[cur].classList.remove('active');
+  dotsEl.children[cur].style.background='#ddd';
+  cur=n;
+  slides[cur].classList.add('active');
+  dotsEl.children[cur].classList.add('active');
+  dotsEl.children[cur].style.background=dotColors[cur];
+  document.getElementById('prevBtn').disabled=cur===0;
+  document.getElementById('nextBtn').disabled=cur===total-1;
+}
+function go(d){const n=cur+d;if(n>=0&&n<total)goTo(n);}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(1);if(e.key==='ArrowRight')go(-1);});
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(dx<0?1:-1);},{passive:true});
+</script>
+</body>
+</html>
